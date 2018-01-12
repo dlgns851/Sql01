@@ -3,6 +3,8 @@ select first_name||' '||last_name as 이름 , salary as 월급 ,phone_number as 
 from employees
 order by hire_date;
 
+//as 안붙여도 됨  문자열 붙이기 
+
 --2
 select job_title, max_salary
 from jobs
@@ -31,6 +33,7 @@ select first_name,salary,to_char(to_date(hire_date),'yyyy-mm'),department_id
 from employees
 where department_id in(10,90,100);
 
+//to_char(hire_date,'yyyy-mm') 만해도됨 
 
 --7
 select first_name,salary
@@ -45,9 +48,10 @@ order by LENGTH(department_name) desc;
 
 
 --9
-select upper(country_name)
-from countries
-order by country_name;
+select distinct  upper( country_name)
+from countries,locations
+where countries.country_id = locations.country_id
+order by upper( country_name);
 
 --10
 select first_name,
